@@ -1,10 +1,11 @@
-Feature: Homepage
-  In order to be able to view and get info about the site
+Feature: Poll
+  In order to be able to take part in the poll
   As an anonymous user
-  We need to be able to have access to the homepage
+  We need to be able to submit an option.
 
-  @api
-  Scenario: Visit the homepage
+  @javascript
+  Scenario: Visit the poll
     Given I am an anonymous user
-    When  I visit the homepage
-    Then  I should have access to the page
+    When  I visit homepage
+    Then  I select an option
+    Then  I should see the text "Thank you for your submission!" message
