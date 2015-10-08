@@ -21,17 +21,6 @@ var capsConfig = {
     'os' : 'Windows',
     'os_version' : '7',
     'resolution' : '1024x768'
-  },
-  'iphone5': {
-    'browser' : 'Chrome',
-    'browser_version' : '42.0',
-    'os' : 'OS X',
-    'os_version' : 'Yosemite',
-    'chromeOptions': {
-      'mobileEmulation': {
-        'deviceName': 'Apple iPhone 5'
-      }
-    }
   }
 };
 
@@ -58,15 +47,35 @@ describe('Visual monitor testing', function() {
     shoovWebdrivercss.after(done);
   });
 
-  it('should show the home page',function(done) {
+  it('should show the Currency Preview page',function(done) {
     client
-      .url(baseUrl)
-      .webdrivercss(testName + '.homepage', {
+      .url('http://server2.web-stat.com/wixCurrencyPreview.pl')
+      .webdrivercss(testName + '.currency-preview', {
         name: '1',
-        exclude: [],
-        remove: [],
-        hide: [],
-        screenWidth: selectedCaps == 'chrome' ? [640, 960, 1200] : undefined,
+        exclude:
+          [
+            // Currency text.
+            '#amt2',
+            // Currency result.
+            '#result',
+          ],
+        screenWidth: selectedCaps == 'chrome' ? [960] : undefined,
+      }, resultsCallback)
+      .call(done);
+  });
+
+  it('should show the about page',function(done) {
+    client
+      .url('http://www.wix.com/demone2/boutique-recruitment-agency#!about/cjg9')
+      .webdrivercss(testName + '.about', {
+        name: '1',
+        exclude:
+          [
+            // Team images.
+            '#cjg9inlineContent #WPht0-17knimg',
+            '#cjg9inlineContent #WPht3-1549imgimage',
+          ],
+        screenWidth: selectedCaps == 'chrome' ? [960] : undefined,
       }, resultsCallback)
       .call(done);
   });
