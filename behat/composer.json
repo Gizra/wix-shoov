@@ -1,0 +1,10 @@
+{
+  "name": "Behat tests for http://server2.web-stat.com/wixCurrencyPreview.pl",
+  "description": "Functional testing for http://server2.web-stat.com/wixCurrencyPreview.pl site.",
+  "require": {
+    "drupal/drupal-extension": "~3.0"
+  },
+  "config": {
+    "bin-dir": "bin/"
+  }
+}
