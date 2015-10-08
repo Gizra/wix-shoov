@@ -42,13 +42,12 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   public function iSelectAnOption() {
     $this->iWaitForCssElement('.dynamicElements');
 
-//    $element = $this->getSession()->getPage()->find('css', '.radioOption');
-    $element = $this->getSession()->getPage()->find('css', '.radioOption:has(input[name="(Radio 3)"])');
+    $element = $this->getSession()->getPage()->find('css', 'input[name="(Radio 3)"]');
     $element->click();
+    sleep(1);
 
     $button = $this->getSession()->getPage()->find('css', '#submitButton');
     $button->click();
-//
   }
 
   /**
@@ -57,6 +56,7 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   public function iShouldSeeTheTextMessage($text) {
     $this->iWaitForCssElement('.success');
     $this->assertPageContainsText($text);
+    sleep(1);
   }
 
 
