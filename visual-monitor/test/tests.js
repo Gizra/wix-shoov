@@ -49,19 +49,32 @@ describe('Visual monitor testing', function() {
 
   it('should show the Currency Preview page',function(done) {
     client
-      .url(baseUrl)
-      .webdrivercss(testName + '.homepage', {
+      .url('http://server2.web-stat.com/wixCurrencyPreview.pl')
+      .webdrivercss(testName + '.currency-preview', {
         name: '1',
         exclude:
           [
             // Currency text.
-            '#amt1',
             '#amt2',
             // Currency result.
-            '#original',
             '#result',
           ],
-        hide: [],
+        screenWidth: selectedCaps == 'chrome' ? [960] : undefined,
+      }, resultsCallback)
+      .call(done);
+  });
+
+  it('should show the about page',function(done) {
+    client
+      .url('http://www.wix.com/demone2/boutique-recruitment-agency#!about/cjg9')
+      .webdrivercss(testName + '.about', {
+        name: '1',
+        exclude:
+          [
+            // Team images.
+            '#cjg9inlineContent #WPht0-17knimg',
+            '#cjg9inlineContent #WPht3-1549imgimage',
+          ],
         screenWidth: selectedCaps == 'chrome' ? [960] : undefined,
       }, resultsCallback)
       .call(done);
