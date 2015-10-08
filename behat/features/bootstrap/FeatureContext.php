@@ -44,19 +44,21 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
 
     $element = $this->getSession()->getPage()->find('css', 'input[name="(Radio 3)"]');
     $element->click();
-    sleep(1);
+
+    // Make sure bot detection is not activated.
+    $this->getSession()->wait(1000);
 
     $button = $this->getSession()->getPage()->find('css', '#submitButton');
     $button->click();
   }
 
   /**
-   * @Then I should see the text :arg1 message
+   * @Then I should see the text :text message
    */
   public function iShouldSeeTheTextMessage($text) {
     $this->iWaitForCssElement('.success');
     $this->assertPageContainsText($text);
-    sleep(1);
+    $this->getSession()->wait(1000);
   }
 
 
