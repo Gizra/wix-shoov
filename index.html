@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Shoov - Gizra's Testing Toolkit</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+      <section id="transitions">
+        <h2>Styles</h2>
+        <p>
+          Select transitions<br>
+          <a href="?transition=none#/transitions">None</a> -
+          <a href="?#/transitions">Default</a>
+        </p>
+      </section>
+
+			<section>
+				<h2>How do you know your site is working?</h2>
+				<small>You don't. Unless you monitor it</small>
+
+      </section>
+
+      <section>
+        <div>
+          <h2>Challenge - I</h2>
+					<ul>
+					  <li>Changing the style on a page might break others</li>
+						<li>We’re often unaware of issues caused - unrelated pages, only on specific devices etc</li>
+						<li>This happens on changes introduced post-launch as well</li>
+						<li>Manual QA not a feasible solution</li>
+						<li>Automated testing doesn’t catch visual problems</li>
+					</ul>
+        </div>
+      </section>
+
+			<section>
+        <div>
+          <h2>Challenge - II</h2>
+					<ul>
+					  <li>Confirm live site uptime</li>
+						<li>Validate key features are functional</li>
+						<li>Embedded elements we have no control on, might provide key functionality (StripeJS, Facebook comment, Google login)</li>
+					</ul>
+        </div>
+      </section>
+
+			<section>
+        <div>
+          <h2>Shoov - Gizra's testing toolkit</h2>
+					<div>
+					  <img src="http://www.gizra.com/assets/images/posts/shoov-drupal/image2.jpg" />
+					</div>
+        </div>
+      </section>
+
+
+			<section>
+        <div>
+          <h2>Solution I - Visual Monitoring</h2>
+					<ul>
+						<li>Automatic process constantly takes screenshots in various browsers and devices</li>
+						<li>Compares to expected page format (baseline image)</li>
+						<li>Alerts dev team when the page changed</li>
+					</ul>
+        </div>
+      </section>
+
+			<section>
+				<div>
+					<img src="https://cloud.githubusercontent.com/assets/125707/10742608/b45cc454-7c36-11e5-8df5-a83e8b02b395.png" />
+				</div>
+			</section>
+
+			<section>
+        <div>
+          <h2>Solution I - Visual Monitoring</h2>
+					<div>
+						<iframe src="http://gfycat.com/ifr/AgonizingUntimelyChameleon" frameborder="0" scrolling="no" width="588" height="596" style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);" ></iframe>
+					</div>
+        </div>
+      </section>
+
+			<section>
+        <div>
+          <h2>Visual Monitoring (Mobile Emulation)</h2>
+					<div>
+						<iframe src="http://gfycat.com/ifr/DefiantIcyAlleycat" frameborder="0" scrolling="no" width="586" height="618" style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);" ></iframe>
+					</div>
+        </div>
+      </section>
+
+			<section>
+        <div>
+          <h2>Visual Monitoring (Cross Browsers)</h2>
+					<div>
+					  <img src="http://www.gizra.com/assets/images/posts/shoov-travis/image2.jpg" />
+					</div>
+        </div>
+      </section>
+
+
+			<section>
+				<pre><code data-trim>
+it('should show the home page',function(done) {
+  client
+    .url(baseUrl)
+    .webdrivercss(testName, {name: '1'}, shoovWebdrivercss.processResults)
+    .call(done);
+});
+				</code></pre>
+      </section>
+
+			<section>
+        <div>
+          <h2>Solution II - Live Monitoring</h2>
+					<ul>
+						<li>Test code written in any language (e.g. Behat, CasperJs, etc') runs against live site</li>
+						<li>Alerts dev team when a test failed</li>
+						<li>Keeps log of test actions - devs can immediately reproduce the error and start debugging</li>
+					</ul>
+        </div>
+      </section>
+
+			<section>
+        <div>
+          <h2>Live Monitoring (Functional Tests)</h2>
+					<div>
+					  <img src="./images/behat1.jpg"
+					</div>
+        </div>
+      </section>
+
+			<section>
+        <div>
+          <h2>Live Monitoring (One Click Setup)</h2>
+					<div>
+					  <img src="https://cloud.githubusercontent.com/assets/125707/8808821/89750bb0-2fed-11e5-951e-31e1645f49bc.jpg"
+					</div>
+        </div>
+      </section>
+
+			<section>
+        <div>
+          <h2>Live Monitoring (Real Time Logs)</h2>
+					<div>
+					  <img src="https://cloud.githubusercontent.com/assets/125707/8951238/44e7777a-35d4-11e5-9c83-662cdf189396.jpg"
+					</div>
+        </div>
+      </section>
+
+			<section>
+        <div>
+          <h2>Live Monitoring Example</h2>
+					<div>
+						<iframe src="http://gfycat.com/ifr/ClosedHardtofindCatfish" frameborder="0" scrolling="no" width="588" height="596" style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);" ></iframe>
+					</div>
+        </div>
+      </section>
+
+			<section>
+				<pre><code data-trim>
+# .shoov.yml
+addons:
+  - selenium
+
+env:
+  # GitHub username
+  - secure: "8a0e4139d27a8f1cec757c485eaa3ca5a038074ced07af46a90959db331a2dd8a7c8"
+
+  # GitHub password
+  - secure: "8a0e4139d27a8f1cec757c485eaf2eb3a1210953ec078f41ab037d93261332d58ed51849fce6258a"
+
+before_script:
+  - cd behat
+  # Instead of composer install, we save time by getting
+  # a gzipped file with the vendor and bin directories.
+  - tar zxf behat-vendor.tar.gz
+  - cp behat.local.yml.shoov behat.local.yml
+
+script:
+  - ./bin/behat --tags=~wip
+				</code></pre>
+      </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
