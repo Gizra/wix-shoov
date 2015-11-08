@@ -49,33 +49,34 @@ describe('Visual monitor testing', function() {
 
   it('should show the Currency Preview page',function(done) {
     client
-      .url('http://server2.web-stat.com/wixCurrencyPreview.pl')
+      .url('http://www.wix.com/demone2/eyewear-store#!sale/c1ijr')
       .webdrivercss(testName + '.currency-preview', {
         name: '1',
-        exclude:
-          [
-            // Currency text.
-            '#amt2',
-            // Currency result.
-            '#result',
-          ],
-        screenWidth: selectedCaps == 'chrome' ? [960] : undefined,
+        screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
       }, resultsCallback)
       .call(done);
   });
 
-  it('should show the about page',function(done) {
+  it('should show the rio page',function(done) {
     client
-      .url('http://www.wix.com/demone2/boutique-recruitment-agency#!about/cjg9')
-      .webdrivercss(testName + '.about', {
+      .url('http://www.wix.com/demone2/rio-pousada')
+      .webdrivercss(testName + '.rio', {
+        name: '1',
+        screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
+      }, resultsCallback)
+      .call(done);
+  });
+
+  it('should show the press page',function(done) {
+    client
+      .url('http://www.wix.com/demone2/indie-folk#!press/c15e9')
+      .webdrivercss(testName + '.press', {
         name: '1',
         exclude:
           [
-            // Team images.
-            '#cjg9inlineContent #WPht0-17knimg',
-            '#cjg9inlineContent #WPht3-1549imgimage',
+            '#comp-ifxnnwb8imageimage'
           ],
-        screenWidth: selectedCaps == 'chrome' ? [960] : undefined,
+        screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
       }, resultsCallback)
       .call(done);
   });
