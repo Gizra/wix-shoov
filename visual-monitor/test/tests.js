@@ -56,4 +56,28 @@ describe('Visual monitor testing', function() {
       }, resultsCallback)
       .call(done);
   });
+
+  it('should show the rio page',function(done) {
+    client
+      .url('http://www.wix.com/demone2/rio-pousada')
+      .webdrivercss(testName + '.rio', {
+        name: '1',
+        screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
+      }, resultsCallback)
+      .call(done);
+  });
+
+  it('should show the press page',function(done) {
+    client
+      .url('http://www.wix.com/demone2/indie-folk#!press/c15e9')
+      .webdrivercss(testName + '.press', {
+        name: '1',
+        exclude:
+          [
+            '#comp-ifxnnwb8imageimage'
+          ],
+        screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
+      }, resultsCallback)
+      .call(done);
+  });
 });
