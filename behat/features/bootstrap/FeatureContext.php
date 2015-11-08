@@ -126,4 +126,63 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
       }
     });
   }
+
+  /**
+   * @When I visit christina sun homepage
+   */
+  public function iVisitChristinaSunHomepage()
+  {
+    $this->getSession()->visit('http://www.wix.com/demone2/eyewear-store#!sale/c1ijr');
+  }
+
+  /**
+   * @When I click on the sale button
+   */
+  public function iClickOnTheSaleButton()
+  {
+
+    $saleButton = $this->getSession();
+    sleep(9);
+    if (!empty($saleButton)) {
+      $saleButton->switchToIFrame('i9l9184xiframe');
+    }
+    $saleButtone = $saleButton->getPage()->find("css", "li.product-media-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(3) > a:nth-child(1)");
+    if (!$saleButtone) {
+      throw new \Exception('The button was not found');
+    }
+    $saleButtone->click();
+  }
+
+  /**
+   * @Then I should see the text :arg1 title
+   */
+  public function iShouldSeeTheTextTitle($arg1)
+  {
+    throw new PendingException();
+  }
+
+  /**
+   * @When I visit rio homepage
+   */
+  public function iVisitRioHomepage()
+  {
+    $this->getSession()->visit('http://www.wix.com/website-template/view/html/1710');
+  }
+
+  /**
+   * @When I visit press homepage
+   */
+  public function iVisitPressHomepage()
+  {
+    $this->getSession()->visit('http://www.wix.com/website-template/view/html/1692');
+  }
+
+  /**
+   * @Given /^I click \("\[\^"\]\+"\|'\[\^'\]\+'\|\\w\+\(\[\.,\]\\w\+\)\)$/
+   */
+  public function iClickWW($arg1, $arg2)
+  {
+    throw new PendingException();
+  }
+
 }
