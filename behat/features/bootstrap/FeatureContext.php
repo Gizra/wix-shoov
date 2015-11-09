@@ -210,6 +210,12 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
     throw new PendingException();
   }
 
+  /**
+   * Switch to IFrame.
+   *
+   * @param $session, current page object
+   * @param $id, IFrame id
+   */
   public function moveToIFrame($session, $id) {
     $session->switchToIFrame($id);
   }
