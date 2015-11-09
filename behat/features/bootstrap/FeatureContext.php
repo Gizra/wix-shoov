@@ -140,17 +140,16 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
    */
   public function iClickOnTheSaleButton()
   {
-
     $saleButton = $this->getSession();
-    sleep(9);
+    sleep(5);
     if (!empty($saleButton)) {
       $saleButton->switchToIFrame('i9l9184xiframe');
     }
-    $saleButtone = $saleButton->getPage()->find("css", "li.product-media-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(3) > a:nth-child(1)");
-    if (!$saleButtone) {
+    $saleButton = $saleButton->getPage()->find("css", ".device-desktop .gallery .product-media-container .product-media .ribbon");
+    if (!$saleButton) {
       throw new \Exception('The button was not found');
     }
-    $saleButtone->click();
+    $saleButton->click();
   }
 
   /**
