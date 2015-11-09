@@ -138,26 +138,25 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   /**
    * @When I click on the sale button
    */
-  public function iClickOnTheSaleButton()
-  {
-    $saleButton = $this->getSession();
+  public function iClickOnTheSaleButton() {
+    // The product id IFrame.
+    $id_iframe = 'i9l9184xiframe';
+    // The products list.
+    $productsPage = $this->getSession();
+    // Waiting for the page to load.
     sleep(5);
-    if (!empty($saleButton)) {
-      $saleButton->switchToIFrame('i9l9184xiframe');
+
+    if (!empty($productsPage)) {
+      // switchToIFrame.
+      $this->moveToIFrame($productsPage, $id_iframe);
     }
-    $saleButton = $saleButton->getPage()->find("css", ".device-desktop .gallery .product-media-container .product-media .ribbon");
-    if (!$saleButton) {
+
+    // Find the product button.
+    $productButton = $productsPage->getPage()->find("css", ".device-desktop .gallery .product-media-container .product-media .ribbon");
+    if (!$productButton) {
       throw new \Exception('The button was not found');
     }
-    $saleButton->click();
-  }
-
-  /**
-   * @Then I should see the text :arg1 title
-   */
-  public function iShouldSeeTheTextTitle($arg1)
-  {
-    throw new PendingException();
+    $productButton->click();
   }
 
   /**
@@ -167,6 +166,31 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   {
     $this->getSession()->visit('http://www.wix.com/website-template/view/html/1710');
   }
+
+  /**
+   * @Then I select the check in date
+   */
+  public function iSelectTheCheckInDate()
+  {
+    throw new PendingException();
+  }
+
+  /**
+   * @Then I select the check out date
+   */
+  public function iSelectTheCheckOutDate()
+  {
+    throw new PendingException();
+  }
+
+  /**
+   * @Then I click on the search button
+   */
+  public function iClickOnTheSearchButton()
+  {
+    throw new PendingException();
+  }
+
 
   /**
    * @When I visit press homepage
@@ -182,6 +206,10 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   public function iClickWW($arg1, $arg2)
   {
     throw new PendingException();
+  }
+
+  public function moveToIFrame($session, $id) {
+    $session->switchToIFrame($id);
   }
 
 }
