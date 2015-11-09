@@ -160,41 +160,6 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   }
 
   /**
-   * @When I visit rio hotels homepage
-   */
-  public function iVisitRioHotelsHomepage()
-  {
-    $this->getSession()->visit('http://www.wix.com/website-template/view/html/1710');
-  }
-
-  /**
-   * @Then I Selects term stay
-   */
-  public function iSelectsTermStay()
-  {
-    // The form id IFrame.
-    $id_iframe = 'comp-iemgbo3kiframe';
-    // The products list.
-    $homePage = $this->getSession();
-    // Waiting for the page to load.
-    sleep(10);
-
-    if (!empty($homePage)) {
-      // Switch to IFrame.
-      $this->moveToIFrame($homePage, $id_iframe);
-    }
-  }
-
-  /**
-   * @Then I click on the search button
-   */
-  public function iClickOnTheSearchButton()
-  {
-    throw new PendingException();
-  }
-
-
-  /**
    * @When I visit press homepage
    */
   public function iVisitPressHomepage()
