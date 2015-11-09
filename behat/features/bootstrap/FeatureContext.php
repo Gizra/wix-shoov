@@ -147,7 +147,7 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
     sleep(5);
 
     if (!empty($productsPage)) {
-      // switchToIFrame.
+      // Switch to IFrame.
       $this->moveToIFrame($productsPage, $id_iframe);
     }
 
