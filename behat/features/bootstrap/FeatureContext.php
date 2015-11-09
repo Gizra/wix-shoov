@@ -144,7 +144,7 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
     // The products list.
     $productsPage = $this->getSession();
     // Waiting for the page to load.
-    sleep(5);
+    sleep(6);
 
     if (!empty($productsPage)) {
       // Switch to IFrame.
@@ -160,27 +160,29 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   }
 
   /**
-   * @When I visit rio homepage
+   * @When I visit rio hotels homepage
    */
-  public function iVisitRioHomepage()
+  public function iVisitRioHotelsHomepage()
   {
     $this->getSession()->visit('http://www.wix.com/website-template/view/html/1710');
   }
 
   /**
-   * @Then I select the check in date
+   * @Then I Selects term stay
    */
-  public function iSelectTheCheckInDate()
+  public function iSelectsTermStay()
   {
-    throw new PendingException();
-  }
+    // The form id IFrame.
+    $id_iframe = 'comp-iemgbo3kiframe';
+    // The products list.
+    $homePage = $this->getSession();
+    // Waiting for the page to load.
+    sleep(10);
 
-  /**
-   * @Then I select the check out date
-   */
-  public function iSelectTheCheckOutDate()
-  {
-    throw new PendingException();
+    if (!empty($homePage)) {
+      // Switch to IFrame.
+      $this->moveToIFrame($homePage, $id_iframe);
+    }
   }
 
   /**
@@ -197,7 +199,7 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
    */
   public function iVisitPressHomepage()
   {
-    $this->getSession()->visit('http://www.wix.com/website-template/view/html/1692');
+    $this->getSession()->visit('http://www.wix.com/demone2/indie-folk#!press/c15e9');
   }
 
   /**
