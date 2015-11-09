@@ -168,14 +168,6 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   }
 
   /**
-   * @Given /^I click \("\[\^"\]\+"\|'\[\^'\]\+'\|\\w\+\(\[\.,\]\\w\+\)\)$/
-   */
-  public function iClickWW($arg1, $arg2)
-  {
-    throw new PendingException();
-  }
-
-  /**
    * Switch to IFrame.
    *
    * @param $session, current page object
