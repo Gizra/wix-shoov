@@ -156,8 +156,65 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
     if (!$productButton) {
       throw new \Exception('The button was not found');
     }
+
     $productButton->click();
+    sleep(3);
   }
+
+  /**
+   * @When I visit in christina sun product page
+   */
+  public function iVisitInChristinaSunProductPage()
+  {
+    $this->getSession()->visit('http://www.wix.com/demone2/eyewear-store#!product-page/c1pj6/2962f550-2ed9-339f-b54f-aa53c100507d');
+  }
+
+
+  /**
+   * @Then I should pick a color"
+   */
+  public function iShouldPickAColor()
+  {
+    // The product id IFrame.
+    $id_iframe = 'i98dgzdiiframe';
+    // The product page.
+    $productPage = $this->getSession();
+    // Waiting for the page to load.
+    sleep(9);
+
+    if (!empty($productPage)) {
+      // Switch to IFrame.
+      $this->moveToIFrame($productPage, $id_iframe);
+    }
+
+    // Color element.
+    $color_selected =  $productPage->getPage()->find("css", ".option-colors .option-color .ng-valid");
+    sleep(3);
+
+    if (!$color_selected) {
+      throw new \Exception('The color not selected');
+    }
+
+    $color_selected->click();
+    sleep(2);
+  }
+
+  /**
+   * @Then I click on the add to cart button
+   */
+  public function iClickOnTheAddToCartButton() {
+
+    // Find the add to cart element.
+    $add_to_cart_button = $this->getSession()->getPage()->find("css", ".button-add-to-cart");
+
+    if (!$add_to_cart_button) {
+      throw new \Exception('The button not selected');
+    }
+
+    $add_to_cart_button->click();
+    sleep(5);
+  }
+
 
   /**
    * @When I visit press homepage
