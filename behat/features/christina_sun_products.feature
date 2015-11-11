@@ -5,7 +5,7 @@ Feature: PRODUCT
 
   @javascript
   Scenario: Visit the christina sun products page
-    Given I am an anonymous user
-    When  I visit in christina sun product page
-    Then  I should pick a color"
-    And   I click on the add to cart button
+    Given   I am an anonymous user
+    When    I visit in christina sun product page
+    Then    I should pick a color
+    And     I click on the add to cart button

@@ -171,32 +171,34 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
 
 
   /**
-   * @Then I should pick a color"
+   * @Then I should pick a color
    */
   public function iShouldPickAColor()
   {
     // The product id IFrame.
-    $id_iframe = 'i98dgzdiiframe';
+
     // The product page.
-    $productPage = $this->getSession();
     // Waiting for the page to load.
-    sleep(9);
+    $this->iWaitForCssElement('#i98dgzdiiframe');
+    $this->getSession()->switchToIFrame('i98dgzdiiframe');
+    $this->iWaitForCssElement('.product-page');
 
-    if (!empty($productPage)) {
-      // Switch to IFrame.
-      $this->moveToIFrame($productPage, $id_iframe);
+    // Get options.
+    $labels =  $this->getSession()->getPage()->find('css', '.options-wrapper')->findAll('css', 'label');
+    // Select black color
+    foreach ($labels as $label) {
+      if ($label->getAttribute('title') =='Black') {
+        $color_selected = $label;
+        break;
+      }
     }
-
-    // Color element.
-    $color_selected =  $productPage->getPage()->find("css", ".option-colors .option-color .ng-valid");
-    sleep(3);
 
     if (!$color_selected) {
       throw new \Exception('The color not selected');
     }
 
     $color_selected->click();
-    sleep(2);
+    $this->getSession()->wait(2000);
   }
 
   /**
@@ -212,7 +214,7 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
     }
 
     $add_to_cart_button->click();
-    sleep(5);
+    sleep(3);
   }
 
 
