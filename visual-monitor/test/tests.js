@@ -90,4 +90,20 @@ describe('Visual monitor testing', function() {
       }, resultsCallback)
       .call(done);
   });
+
+  it('should show the media player',function(done) {
+    client
+      .url('http://www.wix.com/demone2/indie-folk')
+      .pause(10000)
+      .webdrivercss(testName + '.media-player', {
+        name: '1',
+        elem:
+          [
+            '#icxcxffq'
+          ],
+        screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
+      }, resultsCallback)
+      .call(done);
+  });
+
 });
