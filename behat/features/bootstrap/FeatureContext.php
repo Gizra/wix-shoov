@@ -126,4 +126,112 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
       }
     });
   }
+
+  /**
+   * @When I visit christina sun homepage
+   */
+  public function iVisitChristinaSunHomepage()
+  {
+    $this->getSession()->visit('http://www.wix.com/demone2/eyewear-store#!sale/c1ijr');
+  }
+
+  /**
+   * @When I click on the sale button
+   */
+  public function iClickOnTheSaleButton() {
+    // The product id IFrame.
+    $id_iframe = 'i9l9184xiframe';
+    // The products list.
+    $productsPage = $this->getSession();
+    // Waiting for the page to load.
+    sleep(6);
+
+    if (!empty($productsPage)) {
+      // Switch to IFrame.
+      $this->moveToIFrame($productsPage, $id_iframe);
+    }
+
+    // Find the product button.
+    $productButton = $productsPage->getPage()->find("css", ".device-desktop .gallery .product-media-container .product-media .ribbon");
+    if (!$productButton) {
+      throw new \Exception('The button was not found');
+    }
+
+    $productButton->click();
+    sleep(3);
+  }
+
+  /**
+   * @When I visit in christina sun product page
+   */
+  public function iVisitInChristinaSunProductPage()
+  {
+    $this->getSession()->visit('http://www.wix.com/demone2/eyewear-store#!product-page/c1pj6/2962f550-2ed9-339f-b54f-aa53c100507d');
+  }
+
+
+  /**
+   * @Then I should pick a color"
+   */
+  public function iShouldPickAColor()
+  {
+    // The product id IFrame.
+    $id_iframe = 'i98dgzdiiframe';
+    // The product page.
+    $productPage = $this->getSession();
+    // Waiting for the page to load.
+    sleep(5);
+
+    if (!empty($productPage)) {
+      // Switch to IFrame.
+      $this->moveToIFrame($productPage, $id_iframe);
+    }
+
+    // Color element.
+    $color_selected =  $productPage->getPage()->find("css", ".option-colors .option-color .ng-valid");
+    sleep(3);
+
+    if (!$color_selected) {
+      throw new \Exception('The color not selected');
+    }
+
+    $color_selected->click();
+    sleep(2);
+  }
+
+  /**
+   * @Then I click on the add to cart button
+   */
+  public function iClickOnTheAddToCartButton() {
+
+    // Find the add to cart element.
+    $add_to_cart_button = $this->getSession()->getPage()->find("css", ".button-add-to-cart");
+
+    if (!$add_to_cart_button) {
+      throw new \Exception('The button not selected');
+    }
+
+    $add_to_cart_button->click();
+    sleep(5);
+  }
+
+
+  /**
+   * @When I visit press homepage
+   */
+  public function iVisitPressHomepage()
+  {
+    $this->getSession()->visit('http://www.wix.com/demone2/indie-folk#!press/c15e9');
+  }
+
+  /**
+   * Switch to IFrame.
+   *
+   * @param $session, current page object
+   * @param $id, IFrame id
+   */
+  public function moveToIFrame($session, $id) {
+    $session->switchToIFrame($id);
+  }
+
 }
