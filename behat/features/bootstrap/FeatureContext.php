@@ -180,7 +180,7 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
     // The product page.
     $productPage = $this->getSession();
     // Waiting for the page to load.
-    sleep(9);
+    sleep(5);
 
     if (!empty($productPage)) {
       // Switch to IFrame.
