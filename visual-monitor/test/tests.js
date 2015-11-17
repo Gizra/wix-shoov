@@ -49,7 +49,8 @@ describe('Visual monitor testing', function() {
 
   it('should show the sunglasses page',function(done) {
     client
-      .url('http://www.wix.com/demone2/eyewear-store#!sunglasses/cuba')
+      .url('http://ecom.wix.com/storefront/gallery?cacheKiller=1447760509572&compId=i98dt4wo&deviceType=desktop&instance=vbEUUwRCo74EW9pjyoBoh54do1K-diiBS2bsIYvEDq0.eyJpbnN0YW5jZUlkIjoiOTZkNzY5Y2ItZmI3OS00YjZjLTkyNTktYzI5MGZlZWVlYWM1Iiwic2lnbkRhdGUiOiIyMDE1LTExLTE3VDExOjQxOjQ5LjAxN1oiLCJ1aWQiOm51bGwsInBlcm1pc3Npb25zIjpudWxsLCJpcEFuZFBvcnQiOiI4NC4xMDkuOTAuODgvNDI4MDQiLCJ2ZW5kb3JQcm9kdWN0SWQiOm51bGwsImRlbW9Nb2RlIjp0cnVlLCJvcmlnaW5JbnN0YW5jZUlkIjoiMzk3YzZhYTUtNWVmZi00NzEzLWEwYzItOTI1ZDIwYzY4YjU0IiwiYWlkIjoiYmU2YThiZjEtMTc3Zi00ZjNkLTgxMmMtYzFhYjNjMTI1MWU2IiwiYmlUb2tlbiI6ImE4MmExNTczLWI4YzQtMGIwMS0zNmNhLTY2MWQwNWRjYzMwMyIsInNpdGVPd25lcklkIjoiODQ3NzBmNjctZWNiZC00NGI2LWIzNWEtNTg0ZjJkYzE1YWYxIn0&locale=en&viewMode=site&width=978')
+      .click('body > div > div > section ul li:nth-child(1) div .product-media')
       .webdrivercss(testName + '.sunglasses', {
         name: '1',
         screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
@@ -59,7 +60,7 @@ describe('Visual monitor testing', function() {
 
   it('should show the optics page',function(done) {
     client
-      .url('http://www.wix.com/demone2/eyewear-store#!optics/c1no')
+      .url('http://ecom.wix.com/storefront/gallery?cacheKiller=1447763757014&compId=i98dgyxs_0&deviceType=desktop&instance=b0yo2osTrF4B9UoV2YBITWQJRoVi6Vubstlk8F5ekdU.eyJpbnN0YW5jZUlkIjoiOTZkNzY5Y2ItZmI3OS00YjZjLTkyNTktYzI5MGZlZWVlYWM1Iiwic2lnbkRhdGUiOiIyMDE1LTExLTE3VDEyOjM1OjU1LjQyNloiLCJ1aWQiOm51bGwsInBlcm1pc3Npb25zIjpudWxsLCJpcEFuZFBvcnQiOiI4NC4xMDkuOTAuODgvNDQzOTAiLCJ2ZW5kb3JQcm9kdWN0SWQiOm51bGwsImRlbW9Nb2RlIjp0cnVlLCJvcmlnaW5JbnN0YW5jZUlkIjoiMzk3YzZhYTUtNWVmZi00NzEzLWEwYzItOTI1ZDIwYzY4YjU0IiwiYWlkIjoiYzA4NmRkZjgtMTNhOS00MzRkLWFkOTUtMGRkOGQ0ZmRkZjllIiwiYmlUb2tlbiI6ImE4MmExNTczLWI4YzQtMGIwMS0zNmNhLTY2MWQwNWRjYzMwMyIsInNpdGVPd25lcklkIjoiODQ3NzBmNjctZWNiZC00NGI2LWIzNWEtNTg0ZjJkYzE1YWYxIn0&locale=en&section-url=http%3A%2F%2Fwww.wix.com%2Fdemone2%2Feyewear-store%23!optics%2Fc1no%2F&target=_top&viewMode=site&width=979')
       .webdrivercss(testName + '.optics', {
         name: '1',
         screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
@@ -69,7 +70,7 @@ describe('Visual monitor testing', function() {
 
   it('should show the sale page',function(done) {
     client
-      .url('http://www.wix.com/demone2/eyewear-store#!sale/c1ijr')
+      .url('http://ecom.wix.com/storefront/gallery?cacheKiller=1447765722287&compId=i9l9184x&deviceType=desktop&instance=MJpy9KGxMD2mKWOpajuI6qITwaN8tWnXUTenGtlVusg.eyJpbnN0YW5jZUlkIjoiOTZkNzY5Y2ItZmI3OS00YjZjLTkyNTktYzI5MGZlZWVlYWM1Iiwic2lnbkRhdGUiOiIyMDE1LTExLTE3VDEzOjA4OjQxLjUxMFoiLCJ1aWQiOm51bGwsInBlcm1pc3Npb25zIjpudWxsLCJpcEFuZFBvcnQiOiI4NC4xMDkuOTAuODgvMzM0NjkiLCJ2ZW5kb3JQcm9kdWN0SWQiOm51bGwsImRlbW9Nb2RlIjp0cnVlLCJvcmlnaW5JbnN0YW5jZUlkIjoiMzk3YzZhYTUtNWVmZi00NzEzLWEwYzItOTI1ZDIwYzY4YjU0IiwiYWlkIjoiNmM4MzQ0NmMtZTIxMC00M2NjLTk4NDEtMjU3OWE1YjNmNTA3IiwiYmlUb2tlbiI6ImE4MmExNTczLWI4YzQtMGIwMS0zNmNhLTY2MWQwNWRjYzMwMyIsInNpdGVPd25lcklkIjoiODQ3NzBmNjctZWNiZC00NGI2LWIzNWEtNTg0ZjJkYzE1YWYxIn0&locale=en&viewMode=site&width=980')
       .webdrivercss(testName + '.sale', {
         name: '1',
         screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
@@ -84,7 +85,7 @@ describe('Visual monitor testing', function() {
         name: '1',
         hide:
           [
-            '#submit'
+            '#submit',
           ],
         screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
       }, resultsCallback)
