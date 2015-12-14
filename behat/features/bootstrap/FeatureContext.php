@@ -234,4 +234,82 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
     $session->switchToIFrame($id);
   }
 
+  /**
+   * @Given I login with user
+   */
+  public function iLoginWithUser() {
+    $this->loginUser('david@gizra.com', 'a7823s3h');
+  }
+
+  /**
+   * Login a user to the site.
+   *
+   * @param $name
+   *   The user name.
+   * @param $password
+   *   The use password.
+   *
+   * @throws \Behat\Mink\Exception\ElementNotFoundException
+   * @throws \Exception
+   */
+  protected function loginUser($name, $password) {
+    $this->_login($name, $password);
+    // Wait for the dashboard's menu to load.
+    $this->iWaitForCssElement('.sidebar-items-container', 'appear');
+  }
+
+  /**
+   * Login a user to the site.
+   *
+   * @param $name
+   *   The user name.
+   * @param $password
+   *   The use password.
+   *
+   * @throws \Behat\Mink\Exception\ElementNotFoundException
+   * @throws \Exception
+   */
+  private function _login($name, $password) {
+    $this->getSession()->visit('https://www.wix.com/signin?postLogin=http%3A%2F%2Fwww.wix.com%2Fmy-account%2Fsites%2Fa645266b-51ea-47fd-bd2c-c3f26ab96e8d&originUrl=http%3A%2F%2Fwww.wix.com%2Fmy-account%2Fsites%2Fa645266b-51ea-47fd-bd2c-c3f26ab96e8d&overrideLocale=en');
+    $element = $this->getSession()->getPage();
+    sleep(5);
+    $user_name = $element->find('css','#login-input-email');
+    $user_name->setValue($name);
+    $my_password = $element->find('css', '#login-input-password');
+    $my_password ->setValue($password);
+    $submit = $element->findButton('GO');
+    if (empty($submit)) {
+      throw new \Exception(sprintf("No submit button at %s", $this->getSession()->getCurrentUrl()));
+    }
+    // Log in.
+    $submit->click();
+  }
+
+  /**
+   * @Given /^I click on the element with css "([^"]*)"$/
+   */
+  public function iClickOnTheElementWithCss($css_path) {
+      if (!$element = $this->getSession()->getPage()->find('css', $css_path)) {
+          throw new \Exception(sprintf('The element "%s" not found.', $css_path));
+    }
+    $element->click();
+  }
+
+  /**
+   * @When I click the Manage Store
+   */
+  public function iClickTheManageStore() {
+    $page = $this->getSession()->getPage();
+    $manage_store = $page->find('css', '.QA_ecommerce');
+    $manage_store->click();
+  }
+
+  /**
+   * @Then I should not see the error message :arg1
+   */
+  public function iShouldNotSeeTheErrorMessage($arg1) {
+    
+  }
+
+
 }
